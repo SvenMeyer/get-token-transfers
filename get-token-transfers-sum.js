@@ -36,6 +36,7 @@ async function getAssetTransfersForAccount(account) {
     excludeZeroValue: true,
     category: ["erc20"],
     maxCount: 10,
+    withMetadata: true,
     // pageKey
   };
 
@@ -105,7 +106,7 @@ async function processAccount(account) {
         }
       }
 
-      console.log("%i , %s , %s , %s", parseInt(tx.blockNum), tx.uniqueId.padEnd(74, ' '), formatFloatString(tx.rawContract.value, 8, TOKEN_DECIMALS), formatFloatString(balance.toString(), 8, TOKEN_DECIMALS)); // tx.value);
+      console.log("%i , %s , %s , %s , %s", parseInt(tx.blockNum), tx.metadata.blockTimestamp, tx.uniqueId.padEnd(74, ' '), formatFloatString(tx.rawContract.value, 8, TOKEN_DECIMALS), formatFloatString(balance.toString(), 8, TOKEN_DECIMALS)); // tx.value);
     }
 
   } else {
